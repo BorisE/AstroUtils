@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AstroUtils", "AstroUtils\AstroUtils.csproj", "{98BFEF34-399C-4578-8764-79047F55D78F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BE.AstroUtils", "AstroUtils\BE.AstroUtils.csproj", "{98BFEF34-399C-4578-8764-79047F55D78F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BE.LoggingAndConfig", "..\Logging\BE.LoggingAndConfig.csproj", "{31E056EE-0C45-46EA-B20B-FC0B7C3A5292}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{EC93129E-F64C-4F3E-875A-53108B34C10F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +19,16 @@ Global
 		{98BFEF34-399C-4578-8764-79047F55D78F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98BFEF34-399C-4578-8764-79047F55D78F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98BFEF34-399C-4578-8764-79047F55D78F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31E056EE-0C45-46EA-B20B-FC0B7C3A5292}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31E056EE-0C45-46EA-B20B-FC0B7C3A5292}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31E056EE-0C45-46EA-B20B-FC0B7C3A5292}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31E056EE-0C45-46EA-B20B-FC0B7C3A5292}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{31E056EE-0C45-46EA-B20B-FC0B7C3A5292} = {EC93129E-F64C-4F3E-875A-53108B34C10F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FBC8BFEC-0AFF-4233-A78C-3DA15FB400F0}
