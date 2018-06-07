@@ -1,0 +1,9 @@
+﻿Private library for use in astro projects calculations
+(c) 2017-2018 by Boris Emchenko
+
+Calculations made with the help of ASCOM platform
+https://ascom-standards.org/
+
+
+1.0 [07.06.2018]
+- модуль отделен от ObsControl
