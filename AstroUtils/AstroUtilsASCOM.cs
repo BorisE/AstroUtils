@@ -10,6 +10,7 @@ using ASCOM.Astrometry.AstroUtils;
 using System.Threading;
 using LoggingLib;
 
+
 namespace AsrtoUtils
 {
     public class AstroUtilsClass
@@ -18,8 +19,13 @@ namespace AsrtoUtils
         static ASCOM.Astrometry.AstroUtils.AstroUtils ASCOMAUtils;
 
         // OBSERVATORY LOCATION
-        static public double Latitude = 55.9452777777778;
-        static public double Longitude = 38.7133333333333;
+        //Moscow
+        //static public double Latitude = 55.9452777777778;
+        //static public double Longitude = 38.7133333333333;
+        //Vedrus
+        static public double Latitude = 44.7;
+        static public double Longitude = 38.6;
+
         static public double SiteTimeZone = 3;
 
         /// <summary>
@@ -28,45 +34,150 @@ namespace AsrtoUtils
         static AstroUtilsClass()
         {
             ASCOMUtils = new Util();
-            ASCOMAUtils = new AstroUtils();
+            ASCOMAUtils = new ASCOM.Astrometry.AstroUtils.AstroUtils();
         }
 
 
+        #region === DateTime Wrappers ==================================
+        static public DateTime SunSetDateTime(int DayShift = 0)
+        {
+            return ServiceClass.ConvertToDateTime(SunSet(DayShift), DayShift, DateTimeKind.Local);
+        }
+        static public DateTime SunRiseDateTime(int DayShift = 0)
+        {
+            return ServiceClass.ConvertToDateTime(SunRise(DayShift), DayShift, DateTimeKind.Local);
+        }
+
+        static public DateTime CivilTwilightSetDateTime(int DayShift = 0)
+        {
+            return ServiceClass.ConvertToDateTime(NautTwilightSet(DayShift), DayShift, DateTimeKind.Local);
+        }
+        static public DateTime CivilTwilightRiseDateTime(int DayShift = 0)
+        {
+            return ServiceClass.ConvertToDateTime(NautTwilightRise(DayShift), DayShift, DateTimeKind.Local);
+        }
+
+        static public DateTime NavTwilightSetDateTime(int DayShift = 0)
+        {
+            return ServiceClass.ConvertToDateTime(NautTwilightSet(DayShift), DayShift, DateTimeKind.Local);
+        }
+        static public DateTime NautTwilightRiseDateTime(int DayShift = 0)
+        {
+            return ServiceClass.ConvertToDateTime(NautTwilightRise(DayShift), DayShift, DateTimeKind.Local);
+        }
+
+        static public DateTime AstronTwilightSetDateTime(int DayShift = 0)
+        {
+            return ServiceClass.ConvertToDateTime(AstronTwilightSet(DayShift), DayShift, DateTimeKind.Local);
+        }
+        static public DateTime AstronTwilightRiseDateTime(int DayShift = 0)
+        {
+            return ServiceClass.ConvertToDateTime(AstronTwilightRise(DayShift), DayShift, DateTimeKind.Local);
+        }
+
+        static public DateTime MoonSetDateTime(int DayShift = 0)
+        {
+            return ServiceClass.ConvertToDateTime(MoonSet(DayShift), DayShift, DateTimeKind.Local);
+        }
+        static public DateTime MoonRiseDateTime(int DayShift = 0)
+        {
+            return ServiceClass.ConvertToDateTime(MoonRise(DayShift), DayShift, DateTimeKind.Local);
+        }
+        #endregion DateTime Wrappers
+
+
         /// <summary>
-        /// Service function to convert from HourDouble format into "HH:mm:ss" string format
+        /// Return Sun Set time in HourDouble
+        /// Wrapper for EventTime calculations
         /// </summary>
-        /// <param name="HourDouble"></param>
         /// <returns></returns>
-        static public string ConvertToTimeString(double HourDouble)
+        static public double SunSet(int DayShift = 0)
         {
-            int h = (int)Math.Truncate(HourDouble);
-            int m = (int)Math.Truncate((HourDouble - h) * 60);
-            int s = (int)Math.Truncate((HourDouble - h - m / 60.0) * 3600);
+            ArrayList EventList = CalcSunRiseSet(DayShift);
 
-            return h.ToString("D2") + ":" + m.ToString("D2") + ":" + s.ToString("D2");
-        }
+            double res = 0.0;
+            if (EventList != null && EventList.Count > 1) res = (double)EventList[1];
 
-
-        /// <summary>
-        /// Get UTC time in DateTime format
-        /// </summary>
-        /// <returns>DateTime UTC time</returns>
-        static public DateTime GetUTCDateTime()
-        {
-            return DateTime.UtcNow;
+            return res;
         }
 
         /// <summary>
-        /// Get UTC time in HourDouble format
+        /// Return Sun Rise time in HourDouble
+        /// Wrapper for EventTime calculations
         /// </summary>
-        /// <returns>double UTC time</returns>
-        static public double GetUTCTime()
+        /// <returns></returns>
+        static public double SunRise(int DayShift = 0)
         {
-            double h = DateTime.UtcNow.Hour;
-            double m = DateTime.UtcNow.Minute;
-            double s = DateTime.UtcNow.Second;
+            ArrayList EventList = CalcSunRiseSet(DayShift);
 
-            return (h + m / 60.0 + s / 3600.0);
+            double res = 0.0;
+            if (EventList != null && EventList.Count > 0) res = (double)EventList[0];
+
+            return res;
+
+        }
+
+        /// <summary>
+        /// Return Civil Twilight start time in HourDouble
+        /// Wrapper for EventTime calculations
+        /// </summary>
+        /// <returns></returns>
+        static public double CivilTwilightRise(int DayShift = 0)
+        {
+            ArrayList EventList = CalcCivilTwilight(DayShift);
+
+            double res = 0.0;
+            if (EventList != null && EventList.Count > 0) res = (double)EventList[0];
+
+            return res;
+        }
+
+        /// <summary>
+        /// Return Civil Twilight end  time in HourDouble
+        /// Wrapper for EventTime calculations
+        /// </summary>
+        /// <returns></returns>
+        static public double CivilTwilightSet(int DayShift = 0)
+        {
+            ArrayList EventList = CalcCivilTwilight(DayShift);
+
+            double res = 0.0;
+            if (EventList != null && EventList.Count > 1) res = (double)EventList[1];
+
+            return res;
+        }
+
+
+
+        /// <summary>
+        /// Return Moon Set time in HourDouble
+        /// Wrapper for EventTime calculations
+        /// </summary>
+        /// <returns></returns>
+        static public double MoonSet(int DayShift = 0)
+        {
+            ArrayList EventList = CalcMoonRiseSet(DayShift);
+
+            double res = 0.0;
+            if (EventList != null && EventList.Count > 1) res = (double)EventList[1];
+
+            return res;
+        }
+
+        /// <summary>
+        /// Return Moon Rise time in HourDouble
+        /// Wrapper for EventTime calculations
+        /// </summary>
+        /// <returns></returns>
+        static public double MoonRise(int DayShift = 0)
+        {
+            ArrayList EventList = CalcMoonRiseSet(DayShift);
+
+            double res = 0.0;
+            if (EventList != null && EventList.Count > 0) res = (double)EventList[0];
+
+            return res;
+
         }
 
 
@@ -128,43 +239,17 @@ namespace AsrtoUtils
 
 
 
-        /// <summary>
-        /// Return Moon Set time in HourDouble
-        /// Wrapper for EventTime calculations
-        /// </summary>
-        /// <returns></returns>
-        static public double MoonSet(int DayShift = 0)
-        {
-            ArrayList EventList = CalcMoonRiseSet(DayShift);
 
-            double res = 0.0;
-            if (EventList != null && EventList.Count > 1) res = (double)EventList[1];
 
-            return res;
-        }
 
-        /// <summary>
-        /// Return Moon Rise time in HourDouble
-        /// Wrapper for EventTime calculations
-        /// </summary>
-        /// <returns></returns>
-        static public double MoonRise(int DayShift = 0)
-        {
-            ArrayList EventList = CalcMoonRiseSet(DayShift);
 
-            double res = 0.0;
-            if (EventList != null && EventList.Count > 0) res = (double)EventList[0];
-
-            return res;
-
-        }
 
         /// <summary>
         /// Caclulate Moon rise and set events
         /// </summary>
         /// <param name="DayShift">number of days to shift</param>
         /// <returns></returns>
-        static public ArrayList CalcMoonRiseSet(int DayShift = 0)
+        static private ArrayList CalcMoonRiseSet(int DayShift = 0)
         {
             ArrayList EventList = new ArrayList();
             ArrayList ReturnEventList = new ArrayList();
@@ -204,42 +289,11 @@ namespace AsrtoUtils
 
 
         /// <summary>
-        /// Return Sun Set time in HourDouble
-        /// Wrapper for EventTime calculations
-        /// </summary>
-        /// <returns></returns>
-        static public double SunSet(int DayShift = 0)
-        {
-            ArrayList EventList = CalcSunRiseSet(DayShift);
-
-            double res = 0.0;
-            if (EventList != null && EventList.Count > 1) res = (double)EventList[1];
-
-            return res;
-
-        }
-
-        /// <summary>
-        /// Return Sun Rise time in HourDouble
-        /// Wrapper for EventTime calculations
-        /// </summary>
-        /// <returns></returns>
-        static public double SunRise(int DayShift = 0)
-        {
-            ArrayList EventList = CalcSunRiseSet(DayShift);
-
-            double res = 0.0;
-            if (EventList != null && EventList.Count > 0) res = (double)EventList[0];
-
-            return res;
-
-        }
-        /// <summary>
         /// Caclulate Sun rise and set events
         /// </summary>
         /// <param name="DayShift">number of days to shift</param>
         /// <returns></returns>
-        static public ArrayList CalcSunRiseSet(int DayShift = 0)
+        static private ArrayList CalcSunRiseSet(int DayShift = 0)
         {
             ArrayList EventList = new ArrayList();
             ArrayList ReturnEventList = new ArrayList();
@@ -280,41 +334,13 @@ namespace AsrtoUtils
 
 
 
-        /// <summary>
-        /// Return Civil Twilight start time in HourDouble
-        /// Wrapper for EventTime calculations
-        /// </summary>
-        /// <returns></returns>
-        static public double CivilTwilightRise(int DayShift = 0)
-        {
-            ArrayList EventList = CalcCivilTwilight(DayShift);
-        
-            double res = 0.0;
-            if (EventList != null && EventList.Count > 0) res = (double)EventList[0];
-
-            return res;
-        }
-        /// <summary>
-        /// Return Civil Twilight end  time in HourDouble
-        /// Wrapper for EventTime calculations
-        /// </summary>
-        /// <returns></returns>
-        static public double CivilTwilightSet(int DayShift = 0)
-        {
-            ArrayList EventList = CalcCivilTwilight(DayShift);
-
-            double res = 0.0;
-            if (EventList != null && EventList.Count > 1) res = (double)EventList[1];
-
-            return res;
-        }
 
         /// <summary>
         /// Caclulate Civil Twilight events
         /// </summary>
         /// <param name="DayShift">number of days to shift</param>
         /// <returns></returns>
-        static public ArrayList CalcCivilTwilight(int DayShift = 0)
+        static private ArrayList CalcCivilTwilight(int DayShift = 0)
         {
             ArrayList EventList = new ArrayList();
             ArrayList ReturnEventList = new ArrayList();
@@ -370,6 +396,9 @@ namespace AsrtoUtils
             return res;
 
         }
+
+
+
         /// <summary>
         /// Return Naut Twilight end  time in HourDouble
         /// Wrapper for EventTime calculations
@@ -389,7 +418,7 @@ namespace AsrtoUtils
         /// </summary>
         /// <param name="DayShift">number of days to shift</param>
         /// <returns></returns>
-        static public ArrayList CalcNautTwilight(int DayShift = 0)
+        static private ArrayList CalcNautTwilight(int DayShift = 0)
         {
             ArrayList EventList = new ArrayList();
             ArrayList ReturnEventList = new ArrayList();
@@ -465,7 +494,7 @@ namespace AsrtoUtils
         /// </summary>
         /// <param name="DayShift">number of days to shift</param>
         /// <returns></returns>
-        static public ArrayList CalcAstronTwilight(int DayShift = 0)
+        static private ArrayList CalcAstronTwilight(int DayShift = 0)
         {
             ArrayList EventList = new ArrayList();
             ArrayList ReturnEventList = new ArrayList();
@@ -515,6 +544,15 @@ namespace AsrtoUtils
         }
 
 
+        /// <summary>
+        /// Service function to convert from HourDouble format into "HH:mm:ss" string format
+        /// </summary>
+        /// <param name="HourDouble"></param>
+        /// <returns></returns>
+        static public string ConvertToTimeString(double HourDouble)
+        {
+            return ServiceClass.ConvertToTimeString(HourDouble);
+        }
 
 
 
