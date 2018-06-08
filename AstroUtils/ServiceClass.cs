@@ -41,12 +41,25 @@ namespace AsrtoUtils
         }
         static public DateTime ConvertToDateTime(double HourDouble,int DayShift, DateTimeKind DateTimeKindParam)
         {
+            if (HourDouble < 0)
+            {
+                HourDouble = HourDouble + 24;
+                DayShift =- 1; 
+            }
             int h = (int)Math.Truncate(HourDouble);
             int m = (int)Math.Truncate((HourDouble - h) * 60);
             int s = (int)Math.Truncate((HourDouble - h - m / 60.0) * 3600);
 
-            DateTime res = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day+ DayShift, h, m, s, DateTimeKindParam);
-            
+            DateTime res;
+            if (DateTimeKindParam == DateTimeKind.Utc)
+            {
+                res = new DateTime(DateTime.UtcNow.Year, DateTime.UtcNow.Month, DateTime.UtcNow.Day + DayShift, h, m, s, DateTimeKindParam);
+            }
+            else
+            { 
+                res = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day + DayShift, h, m, s, DateTimeKindParam);
+            }
+
             return res;
         }
 

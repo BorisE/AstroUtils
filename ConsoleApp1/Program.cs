@@ -21,19 +21,29 @@ namespace ConsoleApp1
             Console.WriteLine("ASCOM Sunrise: " + AstroUtilsClass.ConvertToTimeString(AstroUtilsClass.SunRise()));
 
             //SunSet.C
-            //double tsunrise, tsunset;
-            //string sunsetTimeString;
-            //TimeSpan sunsetTime;
+            double tsunrise, tsunset;
+            string sunsetTimeString;
+            TimeSpan sunsetTime;
 
-            //Sunriset.CivilTwilight(DateTime.UtcNow.Year, DateTime.UtcNow.Month, DateTime.UtcNow.Day, AstroUtilsClass.Latitude, AstroUtilsClass.Longitude, out tsunrise, out tsunset);
-            //sunsetTime = TimeSpan.FromHours(tsunrise);
-            //sunsetTimeString = sunsetTime.ToString(@"hh\:mm\:ss");
-            //Console.WriteLine("CivilTwilightBeg:" + tsunrise + " " + sunsetTime + " " + sunsetTimeString);
+            Sunriset.AstronomicalTwilight(DateTime.UtcNow.Year, DateTime.UtcNow.Month, DateTime.UtcNow.Day, AstroUtilsClass.Latitude, AstroUtilsClass.Longitude, out tsunrise, out tsunset);
+            sunsetTime = TimeSpan.FromHours(tsunrise);
+            sunsetTimeString = sunsetTime.ToString(@"hh\:mm\:ss");
+            Console.WriteLine("AstoTwilightBeg:" + tsunrise + " " + sunsetTime + " " + sunsetTimeString);
 
             //SunSet wrapper
-            DateTime test1 = AstroUtilsProp.CivilTwilightRiseDateTime();
-            DateTime targetTime = TimeZoneInfo.ConvertTimeFromUtc(test1, TimeZoneInfo.Local);
-            Console.WriteLine("Civil beg:" + test1.ToString("HH:mm:ss") + "->" + targetTime.ToString("HH:mm:ss"));
+            //DateTime test1 = AstroUtilsProp.CivilTwilightRiseDateTime();
+            //DateTime targetTime = TimeZoneInfo.ConvertTimeFromUtc(test1, TimeZoneInfo.Local);
+            //Console.WriteLine("Civil beg:" + test1.ToString("HH:mm:ss") + "->" + targetTime.ToString("HH:mm:ss"));
+
+            Console.WriteLine("Sunset: " + AstroUtilsProp.SunSetDateTime());
+            Console.WriteLine("Civil end: " + AstroUtilsProp.CivilTwilightSetDateTime());
+            Console.WriteLine("nav end: " + AstroUtilsProp.NautTwilightSetDateTime());
+            Console.WriteLine("astro end: " + AstroUtilsProp.AstronTwilightSetDateTime());
+            Console.WriteLine("astro start: " + AstroUtilsProp.AstronTwilightRiseDateTime());
+            Console.WriteLine("nav start: " + AstroUtilsProp.NautTwilightRiseDateTime());
+            Console.WriteLine("civil start: " + AstroUtilsProp.CivilTwilightRiseDateTime());
+            Console.WriteLine("Sunrise: " + AstroUtilsProp.SunRiseDateTime());
+
 
             Console.ReadLine();
         }

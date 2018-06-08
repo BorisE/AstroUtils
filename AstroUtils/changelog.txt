@@ -4,6 +4,10 @@
 Calculations made with the help of ASCOM platform
 https://ascom-standards.org/
 
+Calculating sunrise/sunset/twilight times (UTC) without ASCOM was taken from https://github.com/Mursaat/SunriseSunset which is the C# implementation of Paul Schlyter's sunriset.c.
+ 
+2.0.1 [08.06.2018]
+- bugfix for negative time calculated
 
 2.0 [08.06.2018]
 - кроме модуля с расчетом через ASCOM, добавлена версия прямых расчетов (sunrise.c)

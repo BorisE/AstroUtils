@@ -94,14 +94,15 @@ namespace AsrtoUtils
             //sunsetTime = TimeSpan.FromHours(tsunset);
             //sunsetTimeString = sunsetTime.ToString(@"hh\:mm\:ss");
 
-            return ServiceClass.ConvertToDateTime(Math.Abs(tsunset), DayShift, DateTimeKind.Utc);
+            return ServiceClass.ConvertToDateTime(tsunset, DayShift, DateTimeKind.Utc);
         }
         static public DateTime CivilTwilightRiseDateTimeUtc(int DayShift = 0)
         {
             double tsunrise, tsunset;
 
             Sunriset.CivilTwilight(DateTime.UtcNow.Year, DateTime.UtcNow.Month, DateTime.UtcNow.Day + DayShift, Latitude, Longitude, out tsunrise, out tsunset);
-            return ServiceClass.ConvertToDateTime(Math.Abs(tsunrise), DayShift, DateTimeKind.Utc);
+
+            return ServiceClass.ConvertToDateTime(tsunrise, DayShift, DateTimeKind.Utc);
         }
 
 
@@ -109,13 +110,15 @@ namespace AsrtoUtils
         {
             double tsunrise, tsunset;
             Sunriset.NauticalTwilight(DateTime.UtcNow.Year, DateTime.UtcNow.Month, DateTime.UtcNow.Day + DayShift, Latitude, Longitude, out tsunrise, out tsunset);
-            return ServiceClass.ConvertToDateTime(Math.Abs(tsunset), DayShift, DateTimeKind.Utc);
+
+            return ServiceClass.ConvertToDateTime(tsunset, DayShift, DateTimeKind.Utc);
         }
         static public DateTime NautTwilightRiseDateTimeUtc(int DayShift = 0)
         {
             double tsunrise, tsunset;
             Sunriset.NauticalTwilight(DateTime.UtcNow.Year, DateTime.UtcNow.Month, DateTime.UtcNow.Day + DayShift, Latitude, Longitude, out tsunrise, out tsunset);
-            return ServiceClass.ConvertToDateTime(Math.Abs(tsunrise), DayShift, DateTimeKind.Utc);
+
+            return ServiceClass.ConvertToDateTime(tsunrise, DayShift, DateTimeKind.Utc);
         }
 
 
@@ -125,13 +128,15 @@ namespace AsrtoUtils
         {
             double tsunrise, tsunset;
             Sunriset.AstronomicalTwilight(DateTime.UtcNow.Year, DateTime.UtcNow.Month, DateTime.UtcNow.Day + DayShift, Latitude, Longitude, out tsunrise, out tsunset);
-            return ServiceClass.ConvertToDateTime(Math.Abs(tsunset), DayShift, DateTimeKind.Utc);
+
+            return ServiceClass.ConvertToDateTime(tsunset, DayShift, DateTimeKind.Utc);
         }
         static public DateTime AstronTwilightRiseDateTimeUtc(int DayShift = 0)
         {
             double tsunrise, tsunset;
             Sunriset.AstronomicalTwilight(DateTime.UtcNow.Year, DateTime.UtcNow.Month, DateTime.UtcNow.Day + DayShift, Latitude, Longitude, out tsunrise, out tsunset);
-            return ServiceClass.ConvertToDateTime(Math.Abs(tsunrise), DayShift, DateTimeKind.Utc);
+
+            return ServiceClass.ConvertToDateTime(tsunrise, DayShift, DateTimeKind.Utc);
         }
 
     }

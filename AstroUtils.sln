@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BE.LoggingAndConfig", "..\L
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{EC93129E-F64C-4F3E-875A-53108B34C10F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{2CE26447-3B85-4A1B-A418-4174D7C68663}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "ConsoleApp1\TestApp.csproj", "{2CE26447-3B85-4A1B-A418-4174D7C68663}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
