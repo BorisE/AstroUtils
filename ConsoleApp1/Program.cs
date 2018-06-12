@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using AsrtoUtils;
 
-namespace ConsoleApp1
+namespace AsrtoUtils
 {
     class Program
     {

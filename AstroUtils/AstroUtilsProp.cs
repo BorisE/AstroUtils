@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AsrtoUtils
 {
-    public class AstroUtilsProp
+    public static class AstroUtilsProp
     {
         // OBSERVATORY LOCATION
         //Moscow

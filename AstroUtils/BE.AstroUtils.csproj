@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{98BFEF34-399C-4578-8764-79047F55D78F}</ProjectGuid>
+    <ProjectGuid>{6BD11111-178E-4624-B209-F04B69C06571}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AstroUtils</RootNamespace>
@@ -42,21 +42,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AstroUtilsASCOM.cs" />
-    <Compile Include="AstroUtilsProp.cs" />
     <Compile Include="AstroUtilsAbstract.cs" />
+    <Compile Include="AstroUtilsProp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceClass.cs" />
     <Compile Include="Sunriset.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="changelog.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Logging\BE.LoggingAndConfig.csproj">
       <Project>{31e056ee-0c45-46ea-b20b-fc0b7c3a5292}</Project>
       <Name>BE.LoggingAndConfig</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="changelog.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
