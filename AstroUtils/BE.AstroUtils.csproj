@@ -30,9 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ASCOM.Astrometry, Version=6.0.0.0, Culture=neutral, PublicKeyToken=565de7938946fba7, processorArchitecture=MSIL" />
-    <Reference Include="ASCOM.Exceptions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=565de7938946fba7, processorArchitecture=MSIL" />
-    <Reference Include="ASCOM.Utilities, Version=6.0.0.0, Culture=neutral, PublicKeyToken=565de7938946fba7, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,13 +46,10 @@
     <Compile Include="Sunriset.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Logging\BE.LoggingAndConfig.csproj">
-      <Project>{31e056ee-0c45-46ea-b20b-fc0b7c3a5292}</Project>
-      <Name>BE.LoggingAndConfig</Name>
-    </ProjectReference>
+    <Content Include="changelog.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="changelog.txt" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
