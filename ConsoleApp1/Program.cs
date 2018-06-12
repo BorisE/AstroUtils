@@ -11,21 +11,21 @@ namespace AsrtoUtils
         static void Main(string[] args)
         {
             //ASCOM
-            Console.WriteLine("ASCOM Sunset: " + AstroUtilsClass.ConvertToTimeString(AstroUtilsClass.SunSet()));
-            Console.WriteLine("ASCOM civil end: " + AstroUtilsClass.ConvertToTimeString(AstroUtilsClass.CivilTwilightSet()));
-            Console.WriteLine("ASCOM nav end: " + AstroUtilsClass.ConvertToTimeString(AstroUtilsClass.NautTwilightSet()));
-            Console.WriteLine("ASCOM astro end: " + AstroUtilsClass.ConvertToTimeString(AstroUtilsClass.AstronTwilightSet()));
-            Console.WriteLine("ASCOM astro start: " + AstroUtilsClass.ConvertToTimeString(AstroUtilsClass.AstronTwilightRise()));
-            Console.WriteLine("ASCOM nav start: " + AstroUtilsClass.ConvertToTimeString(AstroUtilsClass.NautTwilightRise()));
-            Console.WriteLine("ASCOM civil start: " + AstroUtilsClass.ConvertToTimeString(AstroUtilsClass.CivilTwilightRise()));
-            Console.WriteLine("ASCOM Sunrise: " + AstroUtilsClass.ConvertToTimeString(AstroUtilsClass.SunRise()));
+            Console.WriteLine("ASCOM Sunset: " + AstroUtilsASCOM.ConvertToTimeString(AstroUtilsASCOM.SunSet()));
+            Console.WriteLine("ASCOM civil end: " + AstroUtilsASCOM.ConvertToTimeString(AstroUtilsASCOM.CivilTwilightSet()));
+            Console.WriteLine("ASCOM nav end: " + AstroUtilsASCOM.ConvertToTimeString(AstroUtilsASCOM.NautTwilightSet()));
+            Console.WriteLine("ASCOM astro end: " + AstroUtilsASCOM.ConvertToTimeString(AstroUtilsASCOM.AstronTwilightSet()));
+            Console.WriteLine("ASCOM astro start: " + AstroUtilsASCOM.ConvertToTimeString(AstroUtilsASCOM.AstronTwilightRise()));
+            Console.WriteLine("ASCOM nav start: " + AstroUtilsASCOM.ConvertToTimeString(AstroUtilsASCOM.NautTwilightRise()));
+            Console.WriteLine("ASCOM civil start: " + AstroUtilsASCOM.ConvertToTimeString(AstroUtilsASCOM.CivilTwilightRise()));
+            Console.WriteLine("ASCOM Sunrise: " + AstroUtilsASCOM.ConvertToTimeString(AstroUtilsASCOM.SunRise()));
 
             //SunSet.C
             double tsunrise, tsunset;
             string sunsetTimeString;
             TimeSpan sunsetTime;
 
-            Sunriset.AstronomicalTwilight(DateTime.UtcNow.Year, DateTime.UtcNow.Month, DateTime.UtcNow.Day, AstroUtilsClass.Latitude, AstroUtilsClass.Longitude, out tsunrise, out tsunset);
+            Sunriset.AstronomicalTwilight(DateTime.UtcNow.Year, DateTime.UtcNow.Month, DateTime.UtcNow.Day, AstroUtilsASCOM.Latitude, AstroUtilsASCOM.Longitude, out tsunrise, out tsunset);
             sunsetTime = TimeSpan.FromHours(tsunrise);
             sunsetTimeString = sunsetTime.ToString(@"hh\:mm\:ss");
             Console.WriteLine("AstoTwilightBeg:" + tsunrise + " " + sunsetTime + " " + sunsetTimeString);

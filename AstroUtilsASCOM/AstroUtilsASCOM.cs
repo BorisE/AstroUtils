@@ -13,7 +13,7 @@ using LoggingLib;
 
 namespace AsrtoUtils
 {
-    public class AstroUtilsClass
+    public class AstroUtilsASCOM
     {
         static ASCOM.Utilities.Util ASCOMUtils;
         static ASCOM.Astrometry.AstroUtils.AstroUtils ASCOMAUtils;
@@ -31,7 +31,7 @@ namespace AsrtoUtils
         /// <summary>
         /// Atuo constructor
         /// </summary>
-        static AstroUtilsClass()
+        static AstroUtilsASCOM()
         {
             ASCOMUtils = new Util();
             ASCOMAUtils = new ASCOM.Astrometry.AstroUtils.AstroUtils();
