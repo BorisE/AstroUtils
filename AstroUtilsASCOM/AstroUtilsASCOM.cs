@@ -9,7 +9,7 @@ using System.Collections;
 using ASCOM.Astrometry.AstroUtils;
 using System.Threading;
 using LoggingLib;
-
+using AsrtoUtils.Conversion;
 
 namespace AsrtoUtils
 {
@@ -41,47 +41,47 @@ namespace AsrtoUtils
         #region === DateTime Wrappers ==================================
         static public DateTime SunSetDateTime(int DayShift = 0)
         {
-            return ServiceClass.ConvertToDateTime(SunSet(DayShift), DayShift, DateTimeKind.Local);
+            return DateTimeUtils.ConvertToDateTime(SunSet(DayShift), DayShift, DateTimeKind.Local);
         }
         static public DateTime SunRiseDateTime(int DayShift = 0)
         {
-            return ServiceClass.ConvertToDateTime(SunRise(DayShift), DayShift, DateTimeKind.Local);
+            return DateTimeUtils.ConvertToDateTime(SunRise(DayShift), DayShift, DateTimeKind.Local);
         }
 
         static public DateTime CivilTwilightSetDateTime(int DayShift = 0)
         {
-            return ServiceClass.ConvertToDateTime(NautTwilightSet(DayShift), DayShift, DateTimeKind.Local);
+            return DateTimeUtils.ConvertToDateTime(NautTwilightSet(DayShift), DayShift, DateTimeKind.Local);
         }
         static public DateTime CivilTwilightRiseDateTime(int DayShift = 0)
         {
-            return ServiceClass.ConvertToDateTime(NautTwilightRise(DayShift), DayShift, DateTimeKind.Local);
+            return DateTimeUtils.ConvertToDateTime(NautTwilightRise(DayShift), DayShift, DateTimeKind.Local);
         }
 
         static public DateTime NavTwilightSetDateTime(int DayShift = 0)
         {
-            return ServiceClass.ConvertToDateTime(NautTwilightSet(DayShift), DayShift, DateTimeKind.Local);
+            return DateTimeUtils.ConvertToDateTime(NautTwilightSet(DayShift), DayShift, DateTimeKind.Local);
         }
         static public DateTime NautTwilightRiseDateTime(int DayShift = 0)
         {
-            return ServiceClass.ConvertToDateTime(NautTwilightRise(DayShift), DayShift, DateTimeKind.Local);
+            return DateTimeUtils.ConvertToDateTime(NautTwilightRise(DayShift), DayShift, DateTimeKind.Local);
         }
 
         static public DateTime AstronTwilightSetDateTime(int DayShift = 0)
         {
-            return ServiceClass.ConvertToDateTime(AstronTwilightSet(DayShift), DayShift, DateTimeKind.Local);
+            return DateTimeUtils.ConvertToDateTime(AstronTwilightSet(DayShift), DayShift, DateTimeKind.Local);
         }
         static public DateTime AstronTwilightRiseDateTime(int DayShift = 0)
         {
-            return ServiceClass.ConvertToDateTime(AstronTwilightRise(DayShift), DayShift, DateTimeKind.Local);
+            return DateTimeUtils.ConvertToDateTime(AstronTwilightRise(DayShift), DayShift, DateTimeKind.Local);
         }
 
         static public DateTime MoonSetDateTime(int DayShift = 0)
         {
-            return ServiceClass.ConvertToDateTime(MoonSet(DayShift), DayShift, DateTimeKind.Local);
+            return DateTimeUtils.ConvertToDateTime(MoonSet(DayShift), DayShift, DateTimeKind.Local);
         }
         static public DateTime MoonRiseDateTime(int DayShift = 0)
         {
-            return ServiceClass.ConvertToDateTime(MoonRise(DayShift), DayShift, DateTimeKind.Local);
+            return DateTimeUtils.ConvertToDateTime(MoonRise(DayShift), DayShift, DateTimeKind.Local);
         }
         #endregion DateTime Wrappers
 
@@ -551,7 +551,7 @@ namespace AsrtoUtils
         /// <returns></returns>
         static public string ConvertToTimeString(double HourDouble)
         {
-            return ServiceClass.ConvertToTimeString(HourDouble);
+            return DateTimeUtils.ConvertToTimeString(HourDouble);
         }
 
 

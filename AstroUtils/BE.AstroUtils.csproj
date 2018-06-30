@@ -41,8 +41,8 @@
   <ItemGroup>
     <Compile Include="AstroUtilsAbstract.cs" />
     <Compile Include="AstroUtilsProp.cs" />
+    <Compile Include="ConversionUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServiceClass.cs" />
     <Compile Include="Sunriset.cs" />
   </ItemGroup>
   <ItemGroup>

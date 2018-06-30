@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AsrtoUtils.Conversion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,41 +28,41 @@ namespace AsrtoUtils
 
         static public DateTime SunSetDateTime(int DayShift = 0)
         {
-            return ServiceClass.ConvertToLocal(AstroUtilsProp.SunSetDateTimeUtc());
+            return DateTimeUtils.ConvertToLocal(AstroUtilsProp.SunSetDateTimeUtc());
         }
         static public DateTime SunRiseDateTime(int DayShift = 0)
         {
-            return ServiceClass.ConvertToLocal(AstroUtilsProp.SunRiseDateTimeUtc());
+            return DateTimeUtils.ConvertToLocal(AstroUtilsProp.SunRiseDateTimeUtc());
         }
 
 
         static public DateTime CivilTwilightSetDateTime(int DayShift = 0)
         {
-            return ServiceClass.ConvertToLocal(AstroUtilsProp.CivilTwilightSetDateTimeUtc());
+            return DateTimeUtils.ConvertToLocal(AstroUtilsProp.CivilTwilightSetDateTimeUtc());
         }
         static public DateTime CivilTwilightRiseDateTime(int DayShift = 0)
         {
-            return ServiceClass.ConvertToLocal(AstroUtilsProp.CivilTwilightRiseDateTimeUtc());
+            return DateTimeUtils.ConvertToLocal(AstroUtilsProp.CivilTwilightRiseDateTimeUtc());
         }
 
 
         static public DateTime NautTwilightSetDateTime(int DayShift = 0)
         {
-            return ServiceClass.ConvertToLocal(AstroUtilsProp.NautTwilightSetDateTimeUtc());
+            return DateTimeUtils.ConvertToLocal(AstroUtilsProp.NautTwilightSetDateTimeUtc());
         }
         static public DateTime NautTwilightRiseDateTime(int DayShift = 0)
         {
-            return ServiceClass.ConvertToLocal(AstroUtilsProp.NautTwilightRiseDateTimeUtc());
+            return DateTimeUtils.ConvertToLocal(AstroUtilsProp.NautTwilightRiseDateTimeUtc());
         }
         
 
         static public DateTime AstronTwilightSetDateTime(int DayShift = 0)
         {
-            return ServiceClass.ConvertToLocal(AstroUtilsProp.AstronTwilightSetDateTimeUtc());
+            return DateTimeUtils.ConvertToLocal(AstroUtilsProp.AstronTwilightSetDateTimeUtc());
         }
         static public DateTime AstronTwilightRiseDateTime(int DayShift = 0)
         {
-            return ServiceClass.ConvertToLocal(AstroUtilsProp.AstronTwilightRiseDateTimeUtc());
+            return DateTimeUtils.ConvertToLocal(AstroUtilsProp.AstronTwilightRiseDateTimeUtc());
         }
 
 
@@ -74,14 +75,14 @@ namespace AsrtoUtils
             double tsunrise, tsunset;
 
             Sunriset.SunriseSunset(DateTime.UtcNow.Year, DateTime.UtcNow.Month, DateTime.UtcNow.Day + DayShift, Latitude, Longitude, out tsunrise, out tsunset);
-            return ServiceClass.ConvertToDateTime(Math.Abs(tsunset), DayShift, DateTimeKind.Utc);
+            return DateTimeUtils.ConvertToDateTime(Math.Abs(tsunset), DayShift, DateTimeKind.Utc);
         }
         static public DateTime SunRiseDateTimeUtc(int DayShift = 0)
         {
             double tsunrise, tsunset;
 
             Sunriset.SunriseSunset(DateTime.UtcNow.Year, DateTime.UtcNow.Month, DateTime.UtcNow.Day + DayShift, Latitude, Longitude, out tsunrise, out tsunset);
-            return ServiceClass.ConvertToDateTime(Math.Abs(tsunrise), DayShift, DateTimeKind.Utc);
+            return DateTimeUtils.ConvertToDateTime(Math.Abs(tsunrise), DayShift, DateTimeKind.Utc);
         }
 
 
@@ -94,7 +95,7 @@ namespace AsrtoUtils
             //sunsetTime = TimeSpan.FromHours(tsunset);
             //sunsetTimeString = sunsetTime.ToString(@"hh\:mm\:ss");
 
-            return ServiceClass.ConvertToDateTime(tsunset, DayShift, DateTimeKind.Utc);
+            return DateTimeUtils.ConvertToDateTime(tsunset, DayShift, DateTimeKind.Utc);
         }
         static public DateTime CivilTwilightRiseDateTimeUtc(int DayShift = 0)
         {
@@ -102,7 +103,7 @@ namespace AsrtoUtils
 
             Sunriset.CivilTwilight(DateTime.UtcNow.Year, DateTime.UtcNow.Month, DateTime.UtcNow.Day + DayShift, Latitude, Longitude, out tsunrise, out tsunset);
 
-            return ServiceClass.ConvertToDateTime(tsunrise, DayShift, DateTimeKind.Utc);
+            return DateTimeUtils.ConvertToDateTime(tsunrise, DayShift, DateTimeKind.Utc);
         }
 
 
@@ -111,14 +112,14 @@ namespace AsrtoUtils
             double tsunrise, tsunset;
             Sunriset.NauticalTwilight(DateTime.UtcNow.Year, DateTime.UtcNow.Month, DateTime.UtcNow.Day + DayShift, Latitude, Longitude, out tsunrise, out tsunset);
 
-            return ServiceClass.ConvertToDateTime(tsunset, DayShift, DateTimeKind.Utc);
+            return DateTimeUtils.ConvertToDateTime(tsunset, DayShift, DateTimeKind.Utc);
         }
         static public DateTime NautTwilightRiseDateTimeUtc(int DayShift = 0)
         {
             double tsunrise, tsunset;
             Sunriset.NauticalTwilight(DateTime.UtcNow.Year, DateTime.UtcNow.Month, DateTime.UtcNow.Day + DayShift, Latitude, Longitude, out tsunrise, out tsunset);
 
-            return ServiceClass.ConvertToDateTime(tsunrise, DayShift, DateTimeKind.Utc);
+            return DateTimeUtils.ConvertToDateTime(tsunrise, DayShift, DateTimeKind.Utc);
         }
 
 
@@ -129,14 +130,14 @@ namespace AsrtoUtils
             double tsunrise, tsunset;
             Sunriset.AstronomicalTwilight(DateTime.UtcNow.Year, DateTime.UtcNow.Month, DateTime.UtcNow.Day + DayShift, Latitude, Longitude, out tsunrise, out tsunset);
 
-            return ServiceClass.ConvertToDateTime(tsunset, DayShift, DateTimeKind.Utc);
+            return DateTimeUtils.ConvertToDateTime(tsunset, DayShift, DateTimeKind.Utc);
         }
         static public DateTime AstronTwilightRiseDateTimeUtc(int DayShift = 0)
         {
             double tsunrise, tsunset;
             Sunriset.AstronomicalTwilight(DateTime.UtcNow.Year, DateTime.UtcNow.Month, DateTime.UtcNow.Day + DayShift, Latitude, Longitude, out tsunrise, out tsunset);
 
-            return ServiceClass.ConvertToDateTime(tsunrise, DayShift, DateTimeKind.Utc);
+            return DateTimeUtils.ConvertToDateTime(tsunrise, DayShift, DateTimeKind.Utc);
         }
 
     }

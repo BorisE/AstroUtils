@@ -6,6 +6,10 @@ https://ascom-standards.org/
 
 Calculating sunrise/sunset/twilight times (UTC) without ASCOM was taken from https://github.com/Mursaat/SunriseSunset which is the C# implementation of Paul Schlyter's sunriset.c.
 
+2.1.1 [30.06.2018]
+- ServiceClass changed to ConversionUtils
+- Added double conversion class DoubleConversionUtils
+
 2.1.0 [12.06.2018]
 - Code restructering: AstroUtils_mob -> AstroUtils, AstroUtils -> AstroUtilsASCOM; all dublicate classes were removed
 
