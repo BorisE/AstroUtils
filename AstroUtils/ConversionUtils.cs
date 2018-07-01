@@ -77,12 +77,14 @@ namespace AsrtoUtils.Conversion
             DateTime res;
             if (DateTimeKindParam == DateTimeKind.Utc)
             {
-                res = new DateTime(DateTime.UtcNow.Year, DateTime.UtcNow.Month, DateTime.UtcNow.Day + DayShift, h, m, s, DateTimeKindParam);
+                res = new DateTime(DateTime.UtcNow.Year, DateTime.UtcNow.Month, DateTime.UtcNow.Day, h, m, s, DateTimeKindParam);
             }
             else
             {
-                res = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day + DayShift, h, m, s, DateTimeKindParam);
+                res = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, h, m, s, DateTimeKindParam);
             }
+            //Add day shift. Can't just -1 n DateTime constructor, because it will be exception on 01/07.
+            res = res.AddDays(DayShift);
 
             return res;
         }
