@@ -6,6 +6,9 @@ https://ascom-standards.org/
 
 Calculating sunrise/sunset/twilight times (UTC) without ASCOM was taken from https://github.com/Mursaat/SunriseSunset which is the C# implementation of Paul Schlyter's sunriset.c.
 
+2.2 [25.07.2018]
+- Moon rise/Moon set time calculations
+
 2.1.2 [01.07.2018]
 - Bug in ConvertToDateTime - you should always use DateTime.Add(DayShift) instead of adding in constructor
 
