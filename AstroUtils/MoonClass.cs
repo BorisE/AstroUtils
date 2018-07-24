@@ -11,6 +11,14 @@ namespace AstroUtils
         public int Minute = -1;
     }
 
+    public enum MoonEventType { MoonRise = 0, MoonSet = 1, MoonUnknown = -1 };
+
+    public class MoonEvent
+    {
+        public DateTime EventTime = DateTime.MinValue;
+        public MoonEventType EventType = MoonEventType.MoonUnknown;
+    }
+
     public static class MoonClass
     {
 
