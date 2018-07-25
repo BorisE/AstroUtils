@@ -29,41 +29,41 @@ namespace AsrtoUtils
 
         static public DateTime SunSetDateTime(int DayShift = 0)
         {
-            return DateTimeUtils.ConvertToLocal(AstroUtilsProp.SunSetDateTimeUtc());
+            return DateTimeUtils.ConvertToLocal(AstroUtilsProp.SunSetDateTimeUtc(DayShift));
         }
         static public DateTime SunRiseDateTime(int DayShift = 0)
         {
-            return DateTimeUtils.ConvertToLocal(AstroUtilsProp.SunRiseDateTimeUtc());
+            return DateTimeUtils.ConvertToLocal(AstroUtilsProp.SunRiseDateTimeUtc(DayShift));
         }
 
 
         static public DateTime CivilTwilightSetDateTime(int DayShift = 0)
         {
-            return DateTimeUtils.ConvertToLocal(AstroUtilsProp.CivilTwilightSetDateTimeUtc());
+            return DateTimeUtils.ConvertToLocal(AstroUtilsProp.CivilTwilightSetDateTimeUtc(DayShift));
         }
         static public DateTime CivilTwilightRiseDateTime(int DayShift = 0)
         {
-            return DateTimeUtils.ConvertToLocal(AstroUtilsProp.CivilTwilightRiseDateTimeUtc());
+            return DateTimeUtils.ConvertToLocal(AstroUtilsProp.CivilTwilightRiseDateTimeUtc(DayShift));
         }
 
 
         static public DateTime NautTwilightSetDateTime(int DayShift = 0)
         {
-            return DateTimeUtils.ConvertToLocal(AstroUtilsProp.NautTwilightSetDateTimeUtc());
+            return DateTimeUtils.ConvertToLocal(AstroUtilsProp.NautTwilightSetDateTimeUtc(DayShift));
         }
         static public DateTime NautTwilightRiseDateTime(int DayShift = 0)
         {
-            return DateTimeUtils.ConvertToLocal(AstroUtilsProp.NautTwilightRiseDateTimeUtc());
+            return DateTimeUtils.ConvertToLocal(AstroUtilsProp.NautTwilightRiseDateTimeUtc(DayShift));
         }
         
 
         static public DateTime AstronTwilightSetDateTime(int DayShift = 0)
         {
-            return DateTimeUtils.ConvertToLocal(AstroUtilsProp.AstronTwilightSetDateTimeUtc());
+            return DateTimeUtils.ConvertToLocal(AstroUtilsProp.AstronTwilightSetDateTimeUtc(DayShift));
         }
         static public DateTime AstronTwilightRiseDateTime(int DayShift = 0)
         {
-            return DateTimeUtils.ConvertToLocal(AstroUtilsProp.AstronTwilightRiseDateTimeUtc());
+            return DateTimeUtils.ConvertToLocal(AstroUtilsProp.AstronTwilightRiseDateTimeUtc(DayShift));
         }
 
 
