@@ -6,6 +6,10 @@ https://ascom-standards.org/
 
 Calculating sunrise/sunset/twilight times (UTC) without ASCOM was taken from https://github.com/Mursaat/SunriseSunset which is the C# implementation of Paul Schlyter's sunriset.c.
 
+2.2.3 [26.07.2018]
+- AstroUtilsProp wrappers added: getMoonTimesForSession
+- DayShift more correct calculations
+
 2.2.2 [25.07.2018]
 - AstroUtilsProp wrappers added: getMoonTimesForDate
 - DayShift correct calculations

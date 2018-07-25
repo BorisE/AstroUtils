@@ -77,7 +77,7 @@ namespace AsrtoUtils
 
             DateTime CurDate = DateTime.UtcNow;
 
-            Sunriset.SunriseSunset(CurDate.Year, CurDate.Month, CurDate.AddDays(DayShift).Day, Latitude, Longitude, out tsunrise, out tsunset);
+            Sunriset.SunriseSunset(CurDate.AddDays(DayShift).Year, CurDate.AddDays(DayShift).Month, CurDate.AddDays(DayShift).Day, Latitude, Longitude, out tsunrise, out tsunset);
             return DateTimeUtils.ConvertToDateTime(Math.Abs(tsunset), DayShift, DateTimeKind.Utc);
         }
         static public DateTime SunRiseDateTimeUtc(int DayShift = 0)
@@ -86,7 +86,7 @@ namespace AsrtoUtils
 
             DateTime CurDate = DateTime.UtcNow;
 
-            Sunriset.SunriseSunset(CurDate.Year, CurDate.Month, CurDate.AddDays(DayShift).Day, Latitude, Longitude, out tsunrise, out tsunset);
+            Sunriset.SunriseSunset(CurDate.AddDays(DayShift).Year, CurDate.AddDays(DayShift).Month, CurDate.AddDays(DayShift).Day, Latitude, Longitude, out tsunrise, out tsunset);
             return DateTimeUtils.ConvertToDateTime(Math.Abs(tsunrise), DayShift, DateTimeKind.Utc);
         }
 
@@ -98,7 +98,7 @@ namespace AsrtoUtils
 
             DateTime CurDate = DateTime.UtcNow;
 
-            Sunriset.CivilTwilight(CurDate.Year, CurDate.Month, CurDate.AddDays(DayShift).Day, Latitude, Longitude, out tsunrise, out tsunset);
+            Sunriset.CivilTwilight(CurDate.AddDays(DayShift).Year, CurDate.AddDays(DayShift).Month, CurDate.AddDays(DayShift).Day, Latitude, Longitude, out tsunrise, out tsunset);
             //sunsetTime = TimeSpan.FromHours(tsunset);
             //sunsetTimeString = sunsetTime.ToString(@"hh\:mm\:ss");
 
@@ -110,7 +110,7 @@ namespace AsrtoUtils
 
             DateTime CurDate = DateTime.UtcNow;
 
-            Sunriset.CivilTwilight(CurDate.Year, CurDate.Month, CurDate.AddDays(DayShift).Day, Latitude, Longitude, out tsunrise, out tsunset);
+            Sunriset.CivilTwilight(CurDate.AddDays(DayShift).Year, CurDate.AddDays(DayShift).Month, CurDate.AddDays(DayShift).Day, Latitude, Longitude, out tsunrise, out tsunset);
 
             return DateTimeUtils.ConvertToDateTime(tsunrise, DayShift, DateTimeKind.Utc);
         }
@@ -122,7 +122,7 @@ namespace AsrtoUtils
 
             DateTime CurDate = DateTime.UtcNow;
 
-            Sunriset.NauticalTwilight(CurDate.Year, CurDate.Month, CurDate.AddDays(DayShift).Day, Latitude, Longitude, out tsunrise, out tsunset);
+            Sunriset.NauticalTwilight(CurDate.AddDays(DayShift).Year, CurDate.AddDays(DayShift).Month, CurDate.AddDays(DayShift).Day, Latitude, Longitude, out tsunrise, out tsunset);
 
             return DateTimeUtils.ConvertToDateTime(tsunset, DayShift, DateTimeKind.Utc);
         }
@@ -132,7 +132,7 @@ namespace AsrtoUtils
 
             DateTime CurDate = DateTime.UtcNow;
 
-            Sunriset.NauticalTwilight(CurDate.Year, CurDate.Month, CurDate.AddDays(DayShift).Day, Latitude, Longitude, out tsunrise, out tsunset);
+            Sunriset.NauticalTwilight(CurDate.AddDays(DayShift).Year, CurDate.AddDays(DayShift).Month, CurDate.AddDays(DayShift).Day, Latitude, Longitude, out tsunrise, out tsunset);
 
             return DateTimeUtils.ConvertToDateTime(tsunrise, DayShift, DateTimeKind.Utc);
         }
@@ -146,7 +146,7 @@ namespace AsrtoUtils
 
             DateTime CurDate = DateTime.UtcNow;
 
-            Sunriset.AstronomicalTwilight(CurDate.Year, CurDate.Month, CurDate.AddDays(DayShift).Day, Latitude, Longitude, out tsunrise, out tsunset);
+            Sunriset.AstronomicalTwilight(CurDate.AddDays(DayShift).Year, CurDate.AddDays(DayShift).Month, CurDate.AddDays(DayShift).Day, Latitude, Longitude, out tsunrise, out tsunset);
 
             return DateTimeUtils.ConvertToDateTime(tsunset, DayShift, DateTimeKind.Utc);
         }
@@ -156,7 +156,7 @@ namespace AsrtoUtils
 
             DateTime CurDate = DateTime.UtcNow;
 
-            Sunriset.AstronomicalTwilight(CurDate.Year, CurDate.Month, CurDate.AddDays(DayShift).Day, Latitude, Longitude, out tsunrise, out tsunset);
+            Sunriset.AstronomicalTwilight(CurDate.AddDays(DayShift).Year, CurDate.AddDays(DayShift).Month, CurDate.AddDays(DayShift).Day, Latitude, Longitude, out tsunrise, out tsunset);
 
             return DateTimeUtils.ConvertToDateTime(tsunrise, DayShift, DateTimeKind.Utc);
         }
@@ -181,8 +181,8 @@ namespace AsrtoUtils
             DateTime MoonRiseDT1, MoonSetDT1;
             DateTime MoonRiseDT_1, MoonSetDT_1;
             MoonClass.calculateMoonTimes(CurSession.Year, CurSession.Month, CurSession.Day, lat, lon, timezoneoffset, out MoonRiseDT0, out MoonSetDT0);
-            MoonClass.calculateMoonTimes(CurSession.Year, CurSession.Month, CurSession.AddDays(1).Day, lat, lon, timezoneoffset, out MoonRiseDT1, out MoonSetDT1);
-            MoonClass.calculateMoonTimes(CurSession.Year, CurSession.Month, CurSession.AddDays(-1).Day, lat, lon, timezoneoffset, out MoonRiseDT_1, out MoonSetDT_1);
+            MoonClass.calculateMoonTimes(CurSession.AddDays(1).Year, CurSession.AddDays(1).Month, CurSession.AddDays(1).Day, lat, lon, timezoneoffset, out MoonRiseDT1, out MoonSetDT1);
+            MoonClass.calculateMoonTimes(CurSession.AddDays(-1).Year, CurSession.AddDays(-1).Month, CurSession.AddDays(-1).Day, lat, lon, timezoneoffset, out MoonRiseDT_1, out MoonSetDT_1);
 
             DateTime MoonRise = DateTime.MinValue;
             DateTime MoonSet = DateTime.MinValue;
@@ -256,8 +256,8 @@ namespace AsrtoUtils
             DateTime MoonRiseDT1, MoonSetDT1;
             DateTime MoonRiseDT_1, MoonSetDT_1;
             MoonClass.calculateMoonTimes(CurSession.Year, CurSession.Month, CurSession.Day, lat, lon, timezoneoffset, out MoonRiseDT0, out MoonSetDT0);
-            MoonClass.calculateMoonTimes(CurSession.Year, CurSession.Month, CurSession.AddDays(1).Day, lat, lon, timezoneoffset, out MoonRiseDT1, out MoonSetDT1);
-            MoonClass.calculateMoonTimes(CurSession.Year, CurSession.Month, CurSession.AddDays(-1).Day, lat, lon, timezoneoffset, out MoonRiseDT_1, out MoonSetDT_1);
+            MoonClass.calculateMoonTimes(CurSession.AddDays(1).Year, CurSession.AddDays(1).Month, CurSession.AddDays(1).Day, lat, lon, timezoneoffset, out MoonRiseDT1, out MoonSetDT1);
+            MoonClass.calculateMoonTimes(CurSession.AddDays(-1).Year, CurSession.AddDays(-1).Month, CurSession.AddDays(-1).Day, lat, lon, timezoneoffset, out MoonRiseDT_1, out MoonSetDT_1);
 
             MoonEvent MoonEvent1 = new MoonEvent();
             MoonEvent MoonEvent2 = new MoonEvent();
@@ -315,6 +315,59 @@ namespace AsrtoUtils
 
         }
 
+
+        public static void getMoonTimesForSession(DateTime CurDate, double lat, double lon, double timezoneoffset, out DateTime outMoonRise, out DateTime outMoonSet)
+        {
+            DateTime CurSession = CurDate.AddHours(-12);
+            DateTime CurSessionStart = new DateTime(CurSession.Year, CurSession.Month, CurSession.Day, 12, 00, 01);
+            DateTime CurSessionEnd = new DateTime(CurSession.AddDays(1).Year, CurSession.AddDays(1).Month, CurSession.AddDays(1).Day, 11, 59, 59);
+
+            //int Date = ;
+
+            DateTime MoonRiseDT0, MoonSetDT0;
+            DateTime MoonRiseDT1, MoonSetDT1;
+            DateTime MoonRiseDT2, MoonSetDT2;
+            DateTime MoonRiseDT_1, MoonSetDT_1;
+            MoonClass.calculateMoonTimes(CurSession.Year, CurSession.Month, CurSession.Day, lat, lon, timezoneoffset, out MoonRiseDT0, out MoonSetDT0);
+            MoonClass.calculateMoonTimes(CurSession.AddDays(1).Year, CurSession.AddDays(1).Month, CurSession.AddDays(1).Day, lat, lon, timezoneoffset, out MoonRiseDT1, out MoonSetDT1);
+            MoonClass.calculateMoonTimes(CurSession.AddDays(2).Year, CurSession.AddDays(2).Month, CurSession.AddDays(2).Day, lat, lon, timezoneoffset, out MoonRiseDT2, out MoonSetDT2);
+            MoonClass.calculateMoonTimes(CurSession.AddDays(-1).Year, CurSession.AddDays(-1).Month, CurSession.AddDays(-1).Day, lat, lon, timezoneoffset, out MoonRiseDT_1, out MoonSetDT_1);
+
+            DateTime MoonRise = new DateTime();
+            DateTime MoonSet = new DateTime();
+
+            //is there is MoonRise during session
+            if (MoonRiseDT0 >= CurSessionStart && (MoonRiseDT0.Hour!=0 || MoonRiseDT0.Minute !=0))
+            {
+                MoonRise = MoonRiseDT0;
+            }
+            else if (MoonRiseDT1.Hour != 0 || MoonRiseDT1.Minute !=0)
+            {
+                MoonRise = MoonRiseDT1;
+            }
+            else 
+            {
+                MoonRise = MoonRiseDT2;
+            }
+
+            //is there is MoonSet during session
+            if (MoonSetDT0 >= CurSessionStart && (MoonSetDT0.Hour != 0 || MoonSetDT0.Minute != 0))
+            {
+                MoonSet = MoonSetDT0;
+            }
+            else if (MoonSetDT1.Hour !=0 || MoonSetDT1.Minute !=0)
+            {
+                MoonSet = MoonSetDT1;
+            }
+            else 
+            {
+                MoonSet = MoonSetDT2;
+            }
+
+            outMoonRise = MoonRise;
+            outMoonSet = MoonSet;
+
+        }
 
     }
 
