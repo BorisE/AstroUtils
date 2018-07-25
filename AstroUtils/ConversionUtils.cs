@@ -68,7 +68,7 @@ namespace AsrtoUtils.Conversion
             if (HourDouble < 0)
             {
                 HourDouble = HourDouble + 24;
-                DayShift = -1;
+                DayShift = DayShift - 1;
             }
             int h = (int)Math.Truncate(HourDouble);
             int m = (int)Math.Truncate((HourDouble - h) * 60);
