@@ -167,11 +167,25 @@ namespace AsrtoUtils
          * 
          ************************************************************************************************************/
 
+        /*
+         *  ORDINARY FORM (for a given date)
+         */
         public static void getMoonTimesForDate(out DateTime outMoonRise, out DateTime outMoonSet)
         {
             MoonClass.calculateMoonTimes(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Latitude, Longitude, SiteTimeZone, out outMoonRise, out outMoonSet);
         }
 
+
+        /// <summary>
+        /// Calculate MoonRise/Set for a given date
+        /// If no at this day, return [nextday 0:00]
+        /// </summary>
+        /// <param name="CurDate"></param>
+        /// <param name="lat"></param>
+        /// <param name="lon"></param>
+        /// <param name="timezoneoffset"></param>
+        /// <param name="outMoonRise"></param>
+        /// <param name="outMoonSet"></param>
         public static void getMoonTimesForDate(DateTime CurDate, double lat, double lon, double timezoneoffset, out DateTime outMoonRise, out DateTime outMoonSet)
         {
             DateTime CurSession = CurDate.AddHours(-12);
@@ -227,11 +241,9 @@ namespace AsrtoUtils
 
         }
 
-        /// <summary>
-        /// Short overload form
-        /// </summary>
-        /// <param name="outMoonEvent1"></param>
-        /// <param name="outMoonEvent2"></param>
+        /*
+         * EVENTS FORM
+         */
         public static void getMoonEventTimesForDate(out MoonEvent outMoonEvent1, out MoonEvent outMoonEvent2)
         {
             getMoonEventTimesForDate(DateTime.Now, Latitude, Longitude, SiteTimeZone, out outMoonEvent1, out outMoonEvent2);
@@ -315,7 +327,25 @@ namespace AsrtoUtils
 
         }
 
+        /*
+         * SESSION FORM
+         */
 
+        public static void getMoonTimesForSession(out DateTime outMoonRise, out DateTime outMoonSet)
+        {
+            getMoonTimesForSession(DateTime.Now, Latitude, Longitude, SiteTimeZone, out outMoonRise, out outMoonSet);
+        }
+
+        /// <summary>
+        /// Return MoonRise/Set events durins current session ([thisday 12:00:01] - [nextday 11:59:59]
+        /// If no found, return nearest NEXT event
+        /// </summary>
+        /// <param name="CurDate"></param>
+        /// <param name="lat"></param>
+        /// <param name="lon"></param>
+        /// <param name="timezoneoffset"></param>
+        /// <param name="outMoonRise"></param>
+        /// <param name="outMoonSet"></param>
         public static void getMoonTimesForSession(DateTime CurDate, double lat, double lon, double timezoneoffset, out DateTime outMoonRise, out DateTime outMoonSet)
         {
             DateTime CurSession = CurDate.AddHours(-12);
