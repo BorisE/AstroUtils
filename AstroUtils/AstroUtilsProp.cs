@@ -146,12 +146,88 @@ namespace AsrtoUtils
          * Moon Calcs
          * 
          ************************************************************************************************************/
-        public static void getMoonTimesForDate(out MoonEvent outMoonEvent1, out MoonEvent outMoonEvent2)
+
+        public static void getMoonTimesForDate(out DateTime outMoonRise, out DateTime outMoonSet)
         {
-            getMoonTimesForDate(DateTime.Now, Latitude, Longitude, SiteTimeZone, out outMoonEvent1, out outMoonEvent2);
+            MoonClass.calculateMoonTimes(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Latitude, Longitude, SiteTimeZone, out outMoonRise, out outMoonSet);
         }
 
-        public static void getMoonTimesForDate(DateTime CurDate, double lat, double lon, double timezoneoffset, out MoonEvent outMoonEvent1, out MoonEvent outMoonEvent2)
+        public static void getMoonTimesForDate(DateTime CurDate, double lat, double lon, double timezoneoffset, out DateTime outMoonRise, out DateTime outMoonSet)
+        {
+            DateTime CurSession = CurDate.AddHours(-12);
+            //int Date = ;
+
+            DateTime MoonRiseDT0, MoonSetDT0;
+            DateTime MoonRiseDT1, MoonSetDT1;
+            DateTime MoonRiseDT_1, MoonSetDT_1;
+            MoonClass.calculateMoonTimes(CurSession.Year, CurSession.Month, CurSession.Day, lat, lon, timezoneoffset, out MoonRiseDT0, out MoonSetDT0);
+            MoonClass.calculateMoonTimes(CurSession.Year, CurSession.Month, CurSession.AddDays(1).Day, lat, lon, timezoneoffset, out MoonRiseDT1, out MoonSetDT1);
+            MoonClass.calculateMoonTimes(CurSession.Year, CurSession.Month, CurSession.AddDays(-1).Day, lat, lon, timezoneoffset, out MoonRiseDT_1, out MoonSetDT_1);
+
+            DateTime MoonRise = DateTime.MinValue;
+            DateTime MoonSet = DateTime.MinValue;
+
+            if (MoonSetDT0.Hour < MoonRiseDT0.Hour && (MoonSetDT0.Day == CurSession.Day) && (MoonRiseDT0.Day == CurSession.Day))
+            {
+                //Console.Write(" ..." + MoonSetDT0.ToString("MM-dd H:m"));
+                //Console.Write("  " + MoonRiseDT0.ToString("MM-dd H:m") + "...");
+                MoonSet = MoonSetDT0;
+                MoonRise = MoonRiseDT0;
+            }
+            else if ((MoonSetDT0.Day != CurSession.Day) || (MoonRiseDT0.Day != CurSession.Day))
+            {
+                if (MoonSetDT0.Hour == 0)
+                {
+                    //Console.Write("" + MoonRiseDT0.ToString("MM-dd H:m"));
+                    //Console.Write("..." + MoonSetDT1.ToString("MM-dd H:m") + "");
+                    MoonSet = MoonSetDT1;
+
+                    MoonRise = MoonRiseDT0;
+                }
+                else if (MoonRiseDT0.Hour == 0)
+                {
+                    //Console.Write("" + MoonRiseDT_1.ToString("MM-dd H:m"));
+                    //Console.Write("..." + MoonSetDT0.ToString("MM-dd H:m") + "");
+                    MoonSet = MoonSetDT0;
+                    MoonRise = MoonRiseDT_1;
+                }
+            }
+            else
+            {
+                //Console.Write("" + MoonRiseDT0.ToString("MM-dd H:m"));
+                //Console.Write("..." + MoonSetDT0.ToString("MM-dd H:m") + "");
+
+                MoonSet = MoonSetDT0;
+                MoonRise = MoonRiseDT0;
+
+            }
+
+            outMoonRise = MoonRise;
+            outMoonSet = MoonSet;
+
+        }
+
+        /// <summary>
+        /// Short overload form
+        /// </summary>
+        /// <param name="outMoonEvent1"></param>
+        /// <param name="outMoonEvent2"></param>
+        public static void getMoonEventTimesForDate(out MoonEvent outMoonEvent1, out MoonEvent outMoonEvent2)
+        {
+            getMoonEventTimesForDate(DateTime.Now, Latitude, Longitude, SiteTimeZone, out outMoonEvent1, out outMoonEvent2);
+        }
+
+        /// <summary>
+        /// Returns moon rise data in format: 1st event (rise or set) and 2nd event (rise or set)
+        /// Удобно для выводва данных (примеры есть в тексте)
+        /// </summary>
+        /// <param name="CurDate">Дата DateTime</param>
+        /// <param name="lat">Долгота, доли градуса</param>
+        /// <param name="lon">Долгота, доли градуса</param>
+        /// <param name="timezoneoffset">Смещение, 3 для Москвы</param>
+        /// <param name="outMoonEvent1">out Event1</param>
+        /// <param name="outMoonEvent2">out Event2</param>
+        public static void getMoonEventTimesForDate(DateTime CurDate, double lat, double lon, double timezoneoffset, out MoonEvent outMoonEvent1, out MoonEvent outMoonEvent2)
         {
             DateTime CurSession = CurDate.AddHours(-12);
             //int Date = ;
