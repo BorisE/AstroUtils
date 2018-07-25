@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using AsrtoUtils;
+using AstroUtils;
 
 namespace AsrtoUtils
 {
@@ -43,6 +44,11 @@ namespace AsrtoUtils
             Console.WriteLine("nav start: " + AstroUtilsProp.NautTwilightRiseDateTime());
             Console.WriteLine("civil start: " + AstroUtilsProp.CivilTwilightRiseDateTime());
             Console.WriteLine("Sunrise: " + AstroUtilsProp.SunRiseDateTime());
+
+            DateTime MoonRise, MoonSet = DateTime.MinValue;
+            AstroUtilsProp.getMoonTimesForDate(out MoonRise, out MoonSet);
+            Console.WriteLine("MR: "+MoonRise + "   MS: " + MoonSet);
+
 
 
             Console.ReadLine();

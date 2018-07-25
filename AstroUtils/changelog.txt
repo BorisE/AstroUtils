@@ -8,6 +8,7 @@ Calculating sunrise/sunset/twilight times (UTC) without ASCOM was taken from htt
 
 2.2.2 [25.07.2018]
 - AstroUtilsProp wrappers added: getMoonTimesForDate
+- DayShift correct calculations
 
 2.2.1 [25.07.2018]
 - AstroUtilsProp wrappers added: getMoonEventTimesForDate
